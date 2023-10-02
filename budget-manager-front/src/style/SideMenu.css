@@ -1,0 +1,35 @@
+/* SideMenu.css */
+.side-menu {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    height: 100vh; /* Full height of the viewport */
+    padding: 20px;
+}
+
+/* Style the List and ListItem components */
+.side-menu .MuiList-root {
+    width: 100%; /* Full width of the parent container */
+}
+
+.side-menu .MuiListItem-root {
+    width: 100%; /* Full width of the parent container */
+    display: flex;
+    justify-content: center; /* Center text within ListItem */
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 900px) {
+    .side-menu {
+        flex-direction: row; /* Change flex direction to row */
+        width: 100%;
+        height: auto;
+    }
+
+    .side-menu .MuiList-root {
+        flex-direction: row; /* Change flex direction to row */
+        justify-content: space-around; /* Distribute items evenly */
+    }
+}
