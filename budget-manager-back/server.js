@@ -16,7 +16,6 @@ const PORT = 5000;
 require('dotenv').config();
 const dbURI = process.env.MONGO_URI;
 
-
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true

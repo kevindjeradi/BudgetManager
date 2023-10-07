@@ -1,18 +1,38 @@
 const express = require('express');
 const router = express.Router();
+router.use(express.json());
 const Balance = require('../models/balance');
 const authenticate = require('../middleware/authenticate'); // Import the authentication middleware
+const mongoose = require('mongoose');
 
-router.use(express.json());
-
-// Create a new balance
+// Create a new balance or update existing balances for the user
 router.post('/', authenticate, async (req, res) => {
     try {
-        const balance = new Balance({ ...req.body, userID: req.user._id });
-        await balance.save();
-        res.status(201).send(balance);
+        // Find the user's existing Balance document
+        let userBalances = await Balance.findOne({ userID: req.user._id });
+
+        if (userBalances) {
+            // If user has an existing Balance document, push the new balance to the balances array
+            const newBalance = {
+                ...req.body.balances,
+                _id: new mongoose.Types.ObjectId()  // Generate a new ObjectId for the balance
+            };
+            userBalances.balances.push(newBalance);
+            await userBalances.save();
+            res.status(200).send(userBalances);
+        } else {
+            // If user doesn't have a Balance document, create a new one with the provided balance
+            const balanceDataWithId = {
+                ...req.body,
+                balances: [{ ...req.body.balances, _id: new mongoose.Types.ObjectId() }],
+                userID: req.user._id
+            };
+            const balance = new Balance(balanceDataWithId);
+            await balance.save();
+            res.status(201).send(balance);
+        }
     } catch (err) {
-        res.status(400).send(err.message);
+        res.status(400).json({ error: err.message });
     }
 });
 
