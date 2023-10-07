@@ -3,33 +3,34 @@
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-    height: 100vh; /* Full height of the viewport */
+    align-items: center;
+    justify-content: center;
     padding: 20px;
 }
 
-/* Style the List and ListItem components */
 .side-menu .MuiList-root {
-    width: 100%; /* Full width of the parent container */
-}
-
-.side-menu .MuiListItem-root {
-    width: 100%; /* Full width of the parent container */
+    width: 100%;
     display: flex;
-    justify-content: center; /* Center text within ListItem */
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Media query for screens smaller than 768px */
+.side-menu .menu-item {
+    display: flex;
+    flex-direction: column; /* Adjust flex direction to column for icon above text */
+    justify-content: center;
+    align-items: center; /* Align items to the center */
+    width: 100%;
+    text-align: center;
+}
+
 @media (max-width: 900px) {
-    .side-menu {
-        flex-direction: row; /* Change flex direction to row */
-        width: 100%;
-        height: auto;
+    .side-menu .MuiList-root {
+        flex-direction: row;
+        justify-content: space-around;
     }
 
-    .side-menu .MuiList-root {
-        flex-direction: row; /* Change flex direction to row */
-        justify-content: space-around; /* Distribute items evenly */
+    .side-menu .menu-item {
+        white-space: nowrap; /* Prevents the text from breaking onto the next line */
     }
 }
