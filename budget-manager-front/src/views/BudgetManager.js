@@ -3,19 +3,20 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import SideMenu from 'components/SideMenu';
 import ResumePage from 'views/Resume';
 import DepensesPage from 'views/Depenses';
-import EntreesPage from 'components/EntreesPage';
-import HistoriquesPage from 'components/HistoriquesPage';
+import EntreesPage from 'views/Entrees';
+import HistoriquesPage from 'views/HistoriquesPage';
 import 'style/BudgetManager.css';
 import { Grid } from '@mui/material';
 import AuthPage from 'views/Auth';
-import { useAuth } from 'auth/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
+import GestionPage from './gestion';
 
 function BudgetManager() {
     const { isAuthenticated } = useAuth();
 
     useEffect(() => {
         console.log('Is Authenticated:', isAuthenticated);
-      }, [isAuthenticated]);
+    }, [isAuthenticated]);
 
     return (
     <Router>
@@ -31,6 +32,7 @@ function BudgetManager() {
                     <Route path="depenses" element={isAuthenticated ? <DepensesPage /> : <Navigate to="/" replace />} />
                     <Route path="entrees" element={isAuthenticated ? <EntreesPage /> : <Navigate to="/" replace />} />
                     <Route path="historiques" element={isAuthenticated ? <HistoriquesPage /> : <Navigate to="/" replace />} />
+                    <Route path="gestion" element={isAuthenticated ? <GestionPage /> : <Navigate to="/" replace />} />
                 </Routes>
             </Grid>
         </Grid>

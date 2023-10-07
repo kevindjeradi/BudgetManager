@@ -1,0 +1,19 @@
+/* ajouterDepensesCard.css */
+.income-card {
+  padding: 24px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.income-title {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.margin-bottom {
+  margin-bottom: 16px;
+}
+
+.text-center {
+  text-align: center;
+}

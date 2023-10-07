@@ -1,54 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Grid } from '@mui/material';
 import 'style/ResumePage.css';
 import PieCard from 'components/PieCard';
 import GraphCard from 'components/GraphCard';
 import NumberCard from 'components/NumberCard';
+import { ExpensesContext } from 'contexts/ExpensesContext';
+import { IncomesContext } from 'contexts/IncomeContext';
+import { BalancesContext } from 'contexts/BalanceContext';
 
 function ResumePage() {
-  // Sample data for the line charts
-  const lineData = [
-    { name: 'Week 1', value: 400 },
-    { name: 'Week 2', value: 300 },
-    { name: 'Week 3', value: 200 },
-    { name: 'Week 4', value: 278 },
-    { name: 'Week 5', value: 189 },
-  ];
-
-  // Sample data for the pie charts
-  const pieData = [
-    { name: 'Group A', value: 400 },
-    { name: 'Group B', value: 300 },
-    { name: 'Group C', value: 200 },
-    { name: 'Group D', value: 100 },
-  ];
+  const { incomes } = useContext(IncomesContext);
+  const { expenses } = useContext(ExpensesContext);
+  const { balances } = useContext(BalancesContext);
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+
+  const balanceArray = balances.length > 0 ? balances[0].balances : [];
+
+  const currentBalance = balanceArray.length > 0 ? balanceArray[balanceArray.length - 1].montant : 0;
+  const lastBalance = balanceArray.length > 0 ? balanceArray[balanceArray.length - 2].montant : 0;
 
   return (
     <div className="resume-page">
       <h1 className="page-title">Résumé</h1>
       <Grid container spacing={3} className="grid-container">
         <Grid item xs={12} md={6}>
-          <NumberCard title="Solde actuel" number={2000} />
+          <NumberCard title="Solde actuel" number={currentBalance} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <NumberCard title="Dépenses ce mois" number={1000} />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <PieCard title="Dépenses de la semaine" data={pieData} colors={COLORS} />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <PieCard title="Dépenses du mois" data={pieData} colors={COLORS} />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <PieCard title="Dépenses du trimestre" data={pieData} colors={COLORS} />
+          <NumberCard title="Dernier solde" number={lastBalance} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <GraphCard title="Graphique des dépenses" data={lineData} />
+          <NumberCard title="Entrées ce mois" number={incomes.monthlyIncomes.total} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <GraphCard title="Graphiques des entrées" data={lineData} />
+          <NumberCard title="Dépenses ce mois" number={expenses.monthlyExpenses.total} />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <PieCard title="Entrées ce mois" data={incomes.monthlyIncomes.pieData} colors={COLORS} />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <PieCard title="Dépenses ce mois" data={expenses.monthlyExpenses.pieData} colors={COLORS} />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <GraphCard title="Graphique des entrées" data={incomes.lineData} />
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <GraphCard title="Graphique des dépenses" data={expenses.lineData} />
         </Grid>
       </Grid>
     </div>

@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import 'style/SideMenu.css';
 import { Grid } from '@mui/material';
-import { useAuth } from 'auth/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 
 function SideMenu() {
     const { logout } = useAuth();
@@ -15,6 +15,9 @@ function SideMenu() {
                 <Grid container columns={10} spacing={3}>
                     <Grid item xs={2} md={10}>
                         <ListItem component={Link} to="resume">Résumé</ListItem>
+                    </Grid>
+                    <Grid item xs={2} md={10}>
+                        <ListItem component={Link} to="gestion">Gérer</ListItem>
                     </Grid>
                     <Grid item xs={2} md={10}>
                         <ListItem component={Link} to="depenses">Dépenses</ListItem>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, TextField, Grid, Paper, Typography } from '@mui/material';
 import axios from 'axios';
-import { useAuth } from 'auth/AuthContext';
+import { useAuth } from 'contexts/AuthContext';
 
 function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -21,6 +21,7 @@ function AuthPage() {
       const response = await axios.post(endpoint, formData);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
+        console.log(response.data.token);
         login(); // Call the login method to update isAuthenticated state
         navigate('/resume');
       }

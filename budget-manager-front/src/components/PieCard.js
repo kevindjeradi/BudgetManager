@@ -3,7 +3,23 @@ import { Card, CardContent, Typography } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import 'style/PieCard.css';
 
-function PieCard({ title, data, colors }) {
+function PieCard({ title, data = [], colors }) {
+
+  const createPieData = (data) => {
+    const categories = {};
+    data.forEach(expense => {
+      if (!categories[expense.categorie]) {
+        categories[expense.categorie] = 0;
+      }
+      categories[expense.categorie] += expense.montant;
+    });
+    return Object.keys(categories).map(key => ({ name: key, value: categories[key] }));
+  };
+
+  const pieData = createPieData(data);
+  if (!data.length) return null;
+
+
   return (
     <Card className="card">
       <CardContent className="card-content">
@@ -11,14 +27,14 @@ function PieCard({ title, data, colors }) {
         <ResponsiveContainer width="99%" height={200}>
           <PieChart className="chart">
             <Pie
-              data={data}
+              data={pieData}
               cx="50%"
               cy="50%"
               outerRadius={80}
               fill="#8884d8"
               dataKey="value"
             >
-              {data.map((entry, index) => (
+              {pieData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
               ))}
             </Pie>
