@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import SideMenu from 'components/SideMenu';
 import ResumePage from 'views/Resume';
 import DepensesPage from 'views/Depenses';
@@ -11,17 +11,44 @@ import { Grid } from '@mui/material';
 import AuthPage from 'views/Auth';
 import { useAuth } from 'contexts/AuthContext';
 import GestionPage from './gestion';
+import forestImage from '../images/forest.jpg';
+import forest2Image from '../images/forest2.jpg';
+import waterImage from '../images/water.jpg';
+import dogImage from '../images/dog.jpg';
 
-function BudgetManager() {
+function Content() {
     const { isAuthenticated } = useAuth();
+    const location = useLocation();
+    const [currentRoute, setCurrentRoute] = useState(location.pathname);
 
     useEffect(() => {
-        console.log('Is Authenticated:', isAuthenticated);
-    }, [isAuthenticated]);
+        setCurrentRoute(location.pathname);
+    }, [location]);
+
+    const getBackgroundImage = () => {
+        switch (currentRoute) {
+            case '/':
+                return `url(${forestImage})`;
+            case '/resume':
+                return `url(${forest2Image})`;
+            case '/depenses':
+                return `url(${waterImage})`;
+            case '/entrees':
+            case '/historiques':
+            case '/gestion':
+            default:
+                return `url(${dogImage})`;
+        }
+    };
+
+    const backgroundImageStyle = {
+        backgroundImage: getBackgroundImage(),
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+    };
 
     return (
-    <Router>
-        <Grid container className="budget-manager">
+        <Grid container className="budget-manager" style={backgroundImageStyle}>
             <Grid item xs={12} md={2} className="side-menu">
                 <SideMenu />
             </Grid>
@@ -37,7 +64,14 @@ function BudgetManager() {
                 </Routes>
             </Grid>
         </Grid>
-    </Router>
+    );
+}
+
+function BudgetManager() {
+    return (
+        <Router>
+            <Content />
+        </Router>
     );
 }
 
