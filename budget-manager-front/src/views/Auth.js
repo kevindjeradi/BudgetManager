@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, TextField, Grid, Paper, Typography } from '@mui/material';
+import { Button, TextField, Grid, Card } from '@mui/material';
 import axios from 'axios';
 import { useAuth } from 'contexts/AuthContext';
+import 'style/auth.css';
 
 function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -31,50 +32,52 @@ function AuthPage() {
   };
 
   return (
-    <Grid container justifyContent="center" alignItems="center" style={{ height: '100vh' }}>
-      <Paper elevation={3} style={{ padding: '20px' }}>
-        <Typography variant="h5">{isLogin ? 'Login' : 'Register'}</Typography>
-        <form onSubmit={handleSubmit}>
-          {!isLogin && (
+    <div className='auth-page'>
+      <Grid container className='grid-container'>
+        <Card elevation={3} className='auth-card' style={{ padding: '20px' }}>
+          <h1 className='page-title'>{isLogin ? 'Connexion' : 'Inscription'} </h1>
+            <form onSubmit={handleSubmit}>
+            {!isLogin && (
+              <TextField
+                label="Pseudo"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                margin="normal"
+                fullWidth
+                required
+              />
+            )}
             <TextField
-              label="Username"
-              name="username"
-              value={formData.username}
+              label="Email"
+              name="email"
+              type="email"
+              value={formData.email}
               onChange={handleChange}
               margin="normal"
               fullWidth
               required
             />
-          )}
-          <TextField
-            label="Email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            margin="normal"
-            fullWidth
-            required
-          />
-          <TextField
-            label="Password"
-            name="password"
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-            margin="normal"
-            fullWidth
-            required
-          />
-          <Button type="submit" variant="contained" color="primary" fullWidth>
-            {isLogin ? 'Login' : 'Register'}
+            <TextField
+              label="Mot de passe"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              margin="normal"
+              fullWidth
+              required
+            />
+            <Button type="submit" variant="contained" fullWidth>
+              {isLogin ? 'Se connecter' : "S'inscrire"}
+            </Button>
+          </form>
+          <Button onClick={() => setIsLogin(!isLogin)}>
+            {isLogin ? 'Créer son compte' : "J'ai déjà un compte"}
           </Button>
-        </form>
-        <Button onClick={() => setIsLogin(!isLogin)} color="secondary">
-          {isLogin ? 'Create an account' : 'Already have an account'}
-        </Button>
-      </Paper>
-    </Grid>
+        </Card>
+      </Grid>
+    </div>
   );
 }
 

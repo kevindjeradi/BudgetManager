@@ -1,0 +1,88 @@
+.auth-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  text-align: center;
+  justify-content: center;
+}
+
+.grid-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-title {
+  margin-top: 20px; /* Adjust as needed */
+  text-align: center;
+  color: white;
+}
+
+.auth-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(145deg, rgba(56,189,248,1) 0%, rgba(7,89,133,1) 100%);
+  box-shadow:  10px 10px 20px #30a1d3;
+}
+
+.auth-card h1 {
+  color: white;
+}
+
+/* For the label text */
+.auth-card .MuiFormLabel-root {
+  color: white;
+}
+
+/* For the input text */
+.auth-card .MuiInputBase-input {
+  color: white;
+}
+
+/* For the label when it's focused */
+.auth-card .Mui-focused .MuiFormLabel-root {
+  color: white;
+}
+
+/* For the input underline when it's focused */
+.auth-card .Mui-focused .MuiInput-underline::after {
+  border-bottom-color: white;
+}
+
+.auth-card .MuiInputLabel-outlined.Mui-focused {
+  color: white;
+}
+
+.auth-card .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}
+
+.auth-card .Mui-focused .MuiInputBase-input {
+  color: white;
+}
+
+.auth-card form button {
+  background-color: #0ea5e9;
+  color: white;
+  margin: 20px 0 20px 0;
+}
+
+.auth-card form button:hover {
+  background-color: #0284c7;
+  color: white;
+}
+
+.auth-card button {
+  background-color: #0ea5e9;
+  color: white;
+}
+
+.auth-card button:hover {
+  background-color: #0284c7;
+  color: white;
+}

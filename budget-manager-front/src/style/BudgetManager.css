@@ -1,12 +1,9 @@
 /* budgetManager.css */
 .budget-manager {
   height: 100vh;
-}
-
-.side-menu {
-  background-color: #f4f4f4;
-  padding: 20px;
-  box-sizing: border-box;
+  background-image: url("../images/forest.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .pages {
@@ -15,4 +12,13 @@
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
+  height: 100vh; /* Set height to viewport height */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+@media (max-width: 900px) {
+  .pages {
+    height: auto;
+    overflow: auto;
+  }
 }

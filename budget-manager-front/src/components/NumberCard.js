@@ -6,9 +6,9 @@ import 'style/NumberCard.css';
 function NumberCard({ title, number }) {
   return (
     <Card className="number-card">
-      <CardContent className="card-content">
-        <Typography variant="h6" className="card-title">{title}</Typography>
-        <Typography variant="h2" className="number">
+      <CardContent className="number-card-content">
+        <Typography variant="h5" className="card-title">{title}</Typography>
+        <Typography variant="h3" className="number">
           {number}<EuroIcon fontSize="inherit" />
         </Typography>
       </CardContent>

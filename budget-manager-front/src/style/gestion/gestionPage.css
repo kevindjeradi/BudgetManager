@@ -5,15 +5,3 @@
   flex-direction: column; /* Stack children vertically */
   align-items: center; /* Center children horizontally */
 }
-
-.page-title {
-  margin-top: 20px; /* Adjust as needed */
-  text-align: center;
-}
-
-.grid-container {
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  justify-content: center;
-}

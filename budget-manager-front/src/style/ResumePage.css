@@ -6,17 +6,6 @@
   align-items: center;
 }
 
-.page-title {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.grid-container {
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
 .card {
   height: 100%;
   display: flex;

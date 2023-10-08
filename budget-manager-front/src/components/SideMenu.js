@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import 'style/SideMenu.css';
 import { Grid } from '@mui/material';
 import { useAuth } from 'contexts/AuthContext';
 import Stack from '@mui/material/Stack'
@@ -17,14 +16,14 @@ function SideMenu() {
     const { logout } = useAuth();
 
     return (
-        <div className="side-menu">
+        <div>
             <List>
                 <Grid container spacing={3}>
                     <Grid item xs={4} md={12}>
                         <ListItem component={Link} to="resume" className="menu-item">
                             <Stack spacing={1} alignItems="center">
                                 <DashboardIcon />
-                                Résumé
+                                <span className='stack-text'>Résumé</span>
                             </Stack>
                         </ListItem>
                     </Grid>
@@ -32,7 +31,7 @@ function SideMenu() {
                         <ListItem component={Link} to="gestion" className="menu-item">
                             <Stack spacing={1} alignItems="center">
                                 <SettingsIcon />
-                                Gérer
+                                <span className='stack-text'>Gérer</span>
                             </Stack>
                         </ListItem>
                     </Grid>
@@ -40,7 +39,7 @@ function SideMenu() {
                         <ListItem component={Link} to="depenses" className="menu-item">
                             <Stack spacing={1} alignItems="center">
                                 <ShoppingCartIcon />
-                                Dépenses
+                                <span className='stack-text'>Dépenses</span>
                             </Stack>
                         </ListItem>
                     </Grid>
@@ -48,7 +47,7 @@ function SideMenu() {
                         <ListItem component={Link} to="entrees" className="menu-item">
                             <Stack spacing={1} alignItems="center">
                                 <AccountBalanceWalletIcon />
-                                Entrées
+                                <span className='stack-text'>Entrées</span>
                             </Stack>
                         </ListItem>
                     </Grid>
@@ -56,7 +55,7 @@ function SideMenu() {
                         <ListItem component={Link} to="historiques" className="menu-item">
                             <Stack spacing={1} alignItems="center">
                                 <HistoryIcon />
-                                Historiques
+                                <span className='stack-text'>Historiques</span>
                             </Stack>
                         </ListItem>
                     </Grid>
@@ -64,7 +63,7 @@ function SideMenu() {
                         <ListItem onClick={logout} component={Link} to="/" className="menu-item">
                             <Stack spacing={1} alignItems="center">
                                 <ExitToAppIcon />
-                                Déconnexion
+                                <span className='stack-text'>Déconnexion</span>
                             </Stack>
                         </ListItem>
                     </Grid>

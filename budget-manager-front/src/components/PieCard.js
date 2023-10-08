@@ -21,11 +21,11 @@ function PieCard({ title, data = [], colors }) {
 
 
   return (
-    <Card className="card">
-      <CardContent className="card-content">
-        <Typography variant="h6" className="card-title">{title}</Typography>
+    <Card className="pie-card">
+      <CardContent className="pie-card-content">
+        <Typography variant="h6" className="pie-card-title">{title}</Typography>
         <ResponsiveContainer width="99%" height={200}>
-          <PieChart className="chart">
+          <PieChart className="pie-chart">
             <Pie
               data={pieData}
               cx="50%"

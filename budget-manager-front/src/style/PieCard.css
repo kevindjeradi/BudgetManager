@@ -1,22 +1,32 @@
 /* PieCard */
-.card {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+
+.pie-card {
+  max-width: 80%; 
+  margin: 0 auto; 
+  background: linear-gradient(0deg, rgba(7,89,133,0.8) 0%, rgba(56,189,248,0.8) 100%) !important;
 }
 
-.card-content {
+.pie-card-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  height: 100%;
+  margin-bottom: 20px;
 }
 
-.card-title {
-  margin-bottom: 20px; /* Adjust as needed */
-}
-
-.chart {
+.pie-card-title {
+  color: #0c4a6e;
   align-self: center;
+}
+
+.pie-chart {
+  align-self: center;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 900px) {
+  .pie-card {
+    max-width: 100%;
+  }
 }

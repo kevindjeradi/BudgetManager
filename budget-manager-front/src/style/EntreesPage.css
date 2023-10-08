@@ -5,8 +5,3 @@
   flex-direction: column; /* Stack children vertically */
   align-items: center; /* Center children horizontally */
 }
-
-.page-title {
-  margin-top: 20px; /* Adjust as needed */
-  text-align: center;
-}

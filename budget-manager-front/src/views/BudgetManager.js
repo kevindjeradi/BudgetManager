@@ -6,6 +6,7 @@ import DepensesPage from 'views/Depenses';
 import EntreesPage from 'views/Entrees';
 import HistoriquesPage from 'views/HistoriquesPage';
 import 'style/BudgetManager.css';
+import 'style/SideMenu.css';
 import { Grid } from '@mui/material';
 import AuthPage from 'views/Auth';
 import { useAuth } from 'contexts/AuthContext';

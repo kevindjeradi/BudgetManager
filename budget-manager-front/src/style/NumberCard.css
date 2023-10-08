@@ -1,24 +1,39 @@
-.card {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+/* NumberCard.css */
+.number-card {
+  max-width: 80%; 
+  height: 200px;
+  margin: 0 auto; 
+  background: linear-gradient(0deg, rgba(7,89,133,0.8) 0%, rgba(56,189,248,0.8) 100%) !important;
 }
 
-.card-content {
+.number-card:hover {
+  box-shadow: 0 8px 12px 0 rgba(31, 38, 135, 0.37); /* Optional: Enhance shadow on hover for a "lifting" effect */
+}
+
+.number-card-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between; /* Distribute space between title and number */
+  height: 100%;
 }
 
 .card-title {
-  margin-bottom: 20px;
+  color: #0c4a6e;
+  align-self: center; /* Align the title to the top and center of the flex container */
 }
 
 .number {
+  color: white; 
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-grow: 1; /* Allow the number to take up any available space */
+}
+
+@media screen and (max-width: 900px) {
+  .number-card {
+    max-width: 100%;
+  }
 }
