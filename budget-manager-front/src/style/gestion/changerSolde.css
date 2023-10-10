@@ -3,9 +3,45 @@
   padding: 24px;
   max-width: 400px;
   margin: 20px auto;
+  background: linear-gradient(0deg, rgba(7,89,133,0.8) 0%, rgba(56,189,248,0.8) 100%) !important;
+}
+
+/* For the label text */
+.balance-card .MuiFormLabel-root {
+  color: white;
+}
+
+/* For the input text */
+.balance-card .MuiInputBase-input {
+  color: white;
+}
+
+/* For the label when it's focused */
+.balance-card .Mui-focused .MuiFormLabel-root {
+  color: white;
+}
+
+/* For the input underline when it's focused */
+.balance-card .Mui-focused .MuiInput-underline::after {
+  border-bottom-color: white;
+}
+
+.balance-card .MuiInputLabel-outlined.Mui-focused {
+  color: white;
+}
+
+.balance-card .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}
+
+.balance-card .Mui-focused .MuiInputBase-input {
+  color: white;
 }
 
 .balance-title {
+  color: white;
+  font-weight: bolder !important;
+  align-self: center;
   font-size: 1.5rem;
   margin-bottom: 16px;
 }
