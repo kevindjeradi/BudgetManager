@@ -34,7 +34,7 @@ function Content() {
             case '/depenses':
                 return `url(${waterImage})`;
             case '/entrees':
-            case '/historiques':
+            case '/historique':
             case '/gestion':
             default:
                 return `url(${dogImage})`;
@@ -59,7 +59,7 @@ function Content() {
                     <Route path="resume" element={isAuthenticated ? <ResumePage /> : <Navigate to="/" replace />} />
                     <Route path="depenses" element={isAuthenticated ? <DepensesPage /> : <Navigate to="/" replace />} />
                     <Route path="entrees" element={isAuthenticated ? <EntreesPage /> : <Navigate to="/" replace />} />
-                    <Route path="historiques" element={isAuthenticated ? <HistoriquesPage /> : <Navigate to="/" replace />} />
+                    <Route path="historique" element={isAuthenticated ? <HistoriquesPage /> : <Navigate to="/" replace />} />
                     <Route path="gestion" element={isAuthenticated ? <GestionPage /> : <Navigate to="/" replace />} />
                 </Routes>
             </Grid>

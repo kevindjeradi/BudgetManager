@@ -52,10 +52,10 @@ function SideMenu() {
                         </ListItem>
                     </Grid>
                     <Grid item xs={4} md={12}>
-                        <ListItem component={Link} to="historiques" className="menu-item">
+                        <ListItem component={Link} to="historique" className="menu-item">
                             <Stack spacing={1} alignItems="center">
                                 <HistoryIcon />
-                                <span className='stack-text'>Historiques</span>
+                                <span className='stack-text'>Historique</span>
                             </Stack>
                         </ListItem>
                     </Grid>

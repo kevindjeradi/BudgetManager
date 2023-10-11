@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 router.use(express.json());
 const Balance = require('../models/balance');
+const Historique = require('../models/historique');
 const authenticate = require('../middleware/authenticate'); // Import the authentication middleware
 const mongoose = require('mongoose');
 
@@ -19,6 +20,17 @@ router.post('/', authenticate, async (req, res) => {
             };
             userBalances.balances.push(newBalance);
             await userBalances.save();
+
+            // Add entry to historiques
+            let userHistorique = await Historique.findOne({ userID: req.user._id });
+            if (!userHistorique) {
+                userHistorique = new Historique({ userID: req.user._id, changes: [] });
+            }
+            userHistorique.changes.push({
+                activity: 'Nouveau solde : ' + req.body.balances.montant + ' euros'
+            });
+            await userHistorique.save();
+            
             res.status(200).send(userBalances);
         } else {
             // If user doesn't have a Balance document, create a new one with the provided balance

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 router.use(express.json());
 const Expense = require('../models/expense');
+const Historique = require('../models/historique');
 const authenticate = require('../middleware/authenticate'); // Import the authentication middleware
 const mongoose = require('mongoose');
 
@@ -19,6 +20,17 @@ router.post('/', authenticate, async (req, res) => {
             };
             userExpenses.expenses.push(newExpense);
             await userExpenses.save();
+
+            // Add entry to historiques
+            let userHistorique = await Historique.findOne({ userID: req.user._id });
+            if (!userHistorique) {
+                userHistorique = new Historique({ userID: req.user._id, changes: [] });
+            }
+            userHistorique.changes.push({
+                activity: "Ajout d'une dépense : " + req.body.expenses.categorie + ' pour : ' + req.body.expenses.montant + ' euros'
+            });
+            await userHistorique.save();
+
             res.status(200).send(userExpenses);
         } else {
             // If user doesn't have an Expense document, create a new one with the provided expense
