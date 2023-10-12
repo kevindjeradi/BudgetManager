@@ -30,10 +30,11 @@ function Content() {
             case '/':
                 return `url(${forestImage})`;
             case '/resume':
-                return `url(${forest2Image})`;
+                return `url(${forestImage})`;
             case '/depenses':
-                return `url(${waterImage})`;
+                return `url(${forest2Image})`;
             case '/entrees':
+                return `url(${waterImage})`;
             case '/historique':
             case '/gestion':
             default:

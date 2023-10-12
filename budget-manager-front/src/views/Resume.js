@@ -23,7 +23,7 @@ function ResumePage() {
 
   return (
     <div className="resume-page">
-      <h1 className="page-title">Résumé</h1>
+      <h1 className="resume-page-title">Résumé</h1>
       <Grid container spacing={3} className="grid-container">
         <Grid item xs={12} md={3}>
           <NumberCard title="Solde actuel" number={currentBalance} />
